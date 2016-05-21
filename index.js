@@ -100,10 +100,12 @@ module.exports = function (options) {
         }
 
         log('\nfile.path: ' + file.path);
-        log('matches: ' + matches[1]);
+        log('matches: ' + matches);
 
-        var sassPaths = matches[1].replace(/[\ '"]/g,"").split(',');
-        compileSass(sassPaths, compileCallback);
+        for (var i in matches){
+            var sassPaths = matches[i].replace(/[\ '"]/g,"").split(',');
+            compileSass(sassPaths, compileCallback);
+        }
 
 
         function compileCallback(code, _string, sassPaths) {
